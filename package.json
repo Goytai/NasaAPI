@@ -1,0 +1,44 @@
+{
+  "name": "nasa",
+  "version": "1.0.0",
+  "main": "./dist/shared/graphql/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --ignore-watch node_modules --ignore src/__tests__ --respawn src/shared/graphql/index.ts",
+    "build": "tsc",
+    "start": "node dist/shared/graphql/index.js",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "migration:generate": "tsnd ./node_modules/typeorm/cli.js migration:generate -n",
+    "migration:create": "tsnd ./node_modules/typeorm/cli.js migration:create -n",
+    "migration:run": "tsnd ./node_modules/typeorm/cli.js migration:run",
+    "migration:show": "tsnd ./node_modules/typeorm/cli.js migration:show",
+    "migration:rollback": "tsnd ./node_modules/typeorm/cli.js migration:revert",
+    "migration:drop-create": "tsnd ./node_modules/typeorm/cli.js schema:drop && tsnd ./node_modules/typeorm/cli.js migration:run",
+    "migration:drop": "tsnd ./node_modules/typeorm/cli.js schema:drop",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "^0.14.0",
+    "apollo-server": "^2.25.1",
+    "class-validator": "^0.13.1",
+    "graphql": "^15.5.0",
+    "mongodb": "^3.6.9",
+    "reflect-metadata": "^0.1.13",
+    "ts-node-dev": "^1.1.6",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.34"
+  }
+}
