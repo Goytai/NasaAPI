@@ -1,13 +1,17 @@
 import { Query } from 'type-graphql';
+import { Service } from 'typedi';
 
 import { SuitablePlanetsService } from './services/suitablePlanets.service';
 import { SuitablePlanetsResponse } from './types/suitablePlanets.type';
 
+@Service()
 export class PlanetsResolver {
-  private suitablePlanetsServices = new SuitablePlanetsService();
+  constructor(
+    private readonly suitablePlanetsServices: SuitablePlanetsService
+  ) {}
 
   @Query(() => [SuitablePlanetsResponse])
-  async suitablePlanets(): Promise<SuitablePlanetsResponse[]> {
+  public async suitablePlanets(): Promise<SuitablePlanetsResponse[]> {
     const response = await this.suitablePlanetsServices.execute();
 
     return response;

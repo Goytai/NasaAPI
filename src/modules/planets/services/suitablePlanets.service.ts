@@ -1,15 +1,20 @@
-import { getMongoRepository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
+import { InjectRepository } from 'typeorm-typedi-extensions';
+import { Service } from 'typedi';
 
 import { Stations } from '../../stations/entities/stations.entity';
 import { SuitablePlanetsResponse } from '../types/suitablePlanets.type';
 import { NasaAPI } from '../../../shared/rest/index';
 
+@Service()
 export class SuitablePlanetsService {
-  private api = new NasaAPI();
+  constructor(
+    @InjectRepository(Stations)
+    private readonly stationRepository: MongoRepository<Stations>,
+    private readonly api: NasaAPI
+  ) {}
 
-  private stationRepository = getMongoRepository(Stations);
-
-  async execute(): Promise<SuitablePlanetsResponse[]> {
+  public async execute(): Promise<SuitablePlanetsResponse[]> {
     const remoteResponse = await this.api.getPlanets();
 
     const suitablePlanets = remoteResponse.filter(

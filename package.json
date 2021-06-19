@@ -34,6 +34,8 @@
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.1.6",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.2.34"
+    "typedi": "^0.10.0",
+    "typeorm": "^0.2.34",
+    "typeorm-typedi-extensions": "^0.4.1"
   }
 }

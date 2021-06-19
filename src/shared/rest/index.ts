@@ -3,12 +3,14 @@ import { SuitablePlanetsResponse } from 'modules/planets/types/suitablePlanets.t
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DataSourceConfig } from 'apollo-datasource';
+import { Service } from 'typedi';
 
 type SuitablePlanetsRemoteResponse = Omit<
   SuitablePlanetsResponse,
   'hasStation'
 >;
 
+@Service()
 export class NasaAPI extends RESTDataSource {
   constructor() {
     super();
@@ -19,7 +21,7 @@ export class NasaAPI extends RESTDataSource {
     this.initialize({} as DataSourceConfig<any>);
   }
 
-  async getPlanets(): Promise<SuitablePlanetsRemoteResponse[]> {
+  public async getPlanets(): Promise<SuitablePlanetsRemoteResponse[]> {
     const response: string = await this.get('/', {
       table: 'exoplanets',
       format: 'json'

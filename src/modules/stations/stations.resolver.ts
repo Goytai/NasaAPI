@@ -1,4 +1,5 @@
 import { Arg, Mutation, Query } from 'type-graphql';
+import { Service } from 'typedi';
 
 import { InstallStationResponse } from './types/installStation.type';
 import { InstallStationInput } from './input/installStation.input';
@@ -6,18 +7,20 @@ import { InstallStationService } from './services/installStation.service';
 import { StationsResponse } from './types/station.type';
 import { StationsService } from './services/stations.service';
 
+@Service()
 export class PlanetsResolver {
-  private stationsService = new StationsService();
-
-  private installStationService = new InstallStationService();
+  constructor(
+    private readonly installStationService: InstallStationService,
+    private readonly stationsService: StationsService
+  ) {}
 
   @Query(() => [StationsResponse])
-  async stations(): Promise<StationsResponse[]> {
+  public async stations(): Promise<StationsResponse[]> {
     return this.stationsService.execute();
   }
 
   @Mutation(() => InstallStationResponse)
-  async installStation(
+  public async installStation(
     @Arg('planet')
     planet: InstallStationInput
   ): Promise<InstallStationResponse> {
