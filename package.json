@@ -1,19 +1,14 @@
 {
   "name": "nasa",
   "version": "1.0.0",
-  "main": "./dist/shared/graphql/index.js",
+  "main": "./dist/shared/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --ignore-watch node_modules --ignore src/__tests__ --respawn src/shared/graphql/index.ts",
+    "dev": "tsnd --ignore-watch node_modules --ignore src/__tests__ --respawn src/shared/index.ts",
     "build": "tsc",
-    "start": "node dist/shared/graphql/index.js",
+    "start": "node dist/shared/index.js",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
-    "migration:generate": "tsnd ./node_modules/typeorm/cli.js migration:generate -n",
-    "migration:create": "tsnd ./node_modules/typeorm/cli.js migration:create -n",
-    "migration:run": "tsnd ./node_modules/typeorm/cli.js migration:run",
-    "migration:show": "tsnd ./node_modules/typeorm/cli.js migration:show",
-    "migration:rollback": "tsnd ./node_modules/typeorm/cli.js migration:revert",
     "migration:drop-create": "tsnd ./node_modules/typeorm/cli.js schema:drop && tsnd ./node_modules/typeorm/cli.js migration:run",
     "migration:drop": "tsnd ./node_modules/typeorm/cli.js schema:drop",
     "test": "jest"

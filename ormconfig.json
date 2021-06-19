@@ -1,0 +1,8 @@
+{
+  "type": "mongodb",
+  "url": "mongodb://root:root@localhost:27017/voltbras?authSource=admin&readPreference=primary&ssl=false",
+  "useUnifiedTopology": true,
+  "entities": [
+    "./src/modules/**/entities/*.ts"
+  ]
+}

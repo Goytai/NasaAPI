@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server';
 import { buildSchemaSync } from 'type-graphql';
 

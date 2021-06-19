@@ -1,10 +1,15 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import PlanetsResponse from 'modules/planets/types/planets.type';
+import { SuitablePlanetsResponse } from 'modules/planets/types/suitablePlanets.type';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DataSourceConfig } from 'apollo-datasource';
 
-class NasaAPI extends RESTDataSource {
+type SuitablePlanetsRemoteResponse = Omit<
+  SuitablePlanetsResponse,
+  'hasStation'
+>;
+
+export class NasaAPI extends RESTDataSource {
   constructor() {
     super();
 
@@ -14,7 +19,7 @@ class NasaAPI extends RESTDataSource {
     this.initialize({} as DataSourceConfig<any>);
   }
 
-  async getPlanets(): Promise<PlanetsResponse[]> {
+  async getPlanets(): Promise<SuitablePlanetsRemoteResponse[]> {
     const response: string = await this.get('/', {
       table: 'exoplanets',
       format: 'json'
@@ -26,17 +31,14 @@ class NasaAPI extends RESTDataSource {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const objectData: any[] = JSON.parse(planetsString);
 
-    const planets: PlanetsResponse[] = [];
+    const planets: SuitablePlanetsRemoteResponse[] = [];
     objectData.forEach(planet =>
       planets.push({
         name: planet.pl_name,
-        mass: planet.pl_bmassj,
-        hasStation: false
+        mass: planet.pl_bmassj
       })
     );
 
     return planets;
   }
 }
-
-export default NasaAPI;

@@ -1,7 +1,7 @@
 import { Field, Float, ObjectType } from 'type-graphql';
 
 @ObjectType()
-class PlanetsResponse {
+export class SuitablePlanetsResponse {
   @Field()
   name: string;
 
@@ -11,5 +11,3 @@ class PlanetsResponse {
   @Field()
   hasStation: boolean;
 }
-
-export default PlanetsResponse;
