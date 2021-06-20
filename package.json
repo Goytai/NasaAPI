@@ -10,8 +10,7 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "migration:drop-create": "tsnd ./node_modules/typeorm/cli.js schema:drop && tsnd ./node_modules/typeorm/cli.js migration:run",
-    "migration:drop": "tsnd ./node_modules/typeorm/cli.js schema:drop",
-    "test": "jest"
+    "migration:drop": "tsnd ./node_modules/typeorm/cli.js schema:drop"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.27.0",
