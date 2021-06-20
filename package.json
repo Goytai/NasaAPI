@@ -4,9 +4,9 @@
   "main": "./dist/shared/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --ignore-watch node_modules --ignore src/__tests__ --respawn src/shared/index.ts",
+    "dev": "set NODE_ENV=developer && tsnd --ignore-watch node_modules --ignore src/__tests__ --respawn src/shared/index.ts",
     "build": "tsc",
-    "start": "node dist/shared/index.js",
+    "start": "set NODE_ENV=production && node dist/shared/index.js",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "migration:drop-create": "tsnd ./node_modules/typeorm/cli.js schema:drop && tsnd ./node_modules/typeorm/cli.js migration:run",
