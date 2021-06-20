@@ -23,7 +23,7 @@ O projeto foi desenvolvido utilizando:
 &rarr; <a href="https://www.apollographql.com/">Apollo Graphql</a> <br>
 &rarr; <a href="https://typegraphql.com/">TypeGraphql</a> <br>
 &rarr; <a href="https://typeorm.io/#/">TypeORM</a> <br>
-&rarr; <a href="https://docs.typestack.community/typedi/v/develop/01-getting-started">Typedi</a> <br>
+&rarr; <a href="https://docs.typestack.community/typedi/v/develop/01-getting-started">TypeDI</a> <br>
 &rarr; <a href="https://www.mongodb.com/">MongoDB</a> <br>
 &rarr; <a href="https://www.docker.com/">Docker</a> <br>
 
